@@ -24,12 +24,10 @@ public:
       PinName pin2);
 
   void move_p1(
-      int type,
       float value,
       float target);
 
   void move_p2(
-      int type,
       float value,
       float target);
 

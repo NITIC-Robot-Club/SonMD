@@ -9,7 +9,6 @@ sonMD::sonMD(
 };
 
 void sonMD::move_p1(
-    int type,
     float value,
     float target)
 {
@@ -48,7 +47,6 @@ void sonMD::move_p1(
 };
 
 void sonMD::move_p2(
-    int type,
     float value,
     float target)
 {
