@@ -23,25 +23,11 @@ void sonMD::move_p1(
   {
     if (value1 > target)
     {
-      if (value1 - target > value)
-      {
-        value1 = value1 - value;
-      }
-      else
-      {
-        value1 = target;
-      }
+      value1 = value1 - target > value ? value1 - value : target;
     }
     else if (value1 < target)
     {
-      if (target - value1 < value)
-      {
-        value1 = value1 + target;
-      }
-      else
-      {
-        value1 = target;
-      }
+      value1 = target - value1 > value ? value1 + value : target;
     }
     pwm1 = value1;
     pwm2 = value2;
@@ -57,29 +43,15 @@ void sonMD::move_p2(
   {
     stop();
   }
-  else if (readTime() >= 1000)
+  else if (readTime() >= 100)
   {
     if (value2 > target)
     {
-      if (value2 - target > value)
-      {
-        value2 = value2 - value;
-      }
-      else
-      {
-        value2 = target;
-      }
+      value2 = value2 - target > value ? value2 - value : target;
     }
     else if (value2 < target)
     {
-      if (target - value2 < value)
-      {
-        value2 = value2 + target;
-      }
-      else
-      {
-        value2 = target;
-      }
+      value2 = target - value2 > value ? value2 + value : target;
     }
     pwm1 = value1;
     pwm2 = value2;
