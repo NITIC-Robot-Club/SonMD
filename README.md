@@ -6,7 +6,7 @@
 ```cpp
 #include "sonMD.h"
 
-sonMD name(pin1,pin2)
+sonMD name(pin1,pin2,frequency)
 ```
 
 pinはPWMに対応しているピンを割り当ててください。
