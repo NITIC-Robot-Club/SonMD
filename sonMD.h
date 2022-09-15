@@ -21,7 +21,8 @@ public:
 
   sonMD(
       PinName pin1,
-      PinName pin2);
+      PinName pin2,
+      float frequency);
 
   void move_p1(
       float value,

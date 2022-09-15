@@ -3,9 +3,12 @@
 
 sonMD::sonMD(
     PinName pin1,
-    PinName pin2) : pwm1(pin1), pwm2(pin2)
+    PinName pin2,
+    float frequency) : pwm1(pin1), pwm2(pin2)
 {
-  timer.reset();
+  pwm1.period(frequency);
+  pwm2.period(frequency);
+  timer.start();
 };
 
 void sonMD::move_p1(
