@@ -21,14 +21,14 @@ public:
   sonMD(
       PinName pin1,
       PinName pin2,
-      float   frequency);
+      float   period);
 
   void move_p1(
-      float value,
+      float displacement,
       float target);
 
   void move_p2(
-      float value,
+      float displacement,
       float target);
 
   void stop();

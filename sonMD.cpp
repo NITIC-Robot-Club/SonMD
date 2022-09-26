@@ -4,23 +4,23 @@
 sonMD::sonMD(
     PinName pin1,
     PinName pin2,
-    float   frequency)
+    float   period)
     : pwm1(pin1), pwm2(pin2) {
-  pwm1.period(frequency);
-  pwm2.period(frequency);
+  pwm1.period(period);
+  pwm2.period(period);
   timer.start();
 };
 
 void sonMD::move_p1(
-    float value,
+    float displacement,
     float target) {
-  if (value2 != 0.0) {
+  if (value2 != 1.0) {
     stop();
   } else if (readTime() >= 100) {
     if (value1 > target) {
-      value1 = value1 - target > value ? value1 - value : target;
-    } else if (value1 < target) {
-      value1 = target - value1 > value ? value1 + value : target;
+      value1 = value1 - target > displacement ? value1 - displacement : target;
+    } else if (target > value1) {
+      value1 = target - value1 > displacement ? value1 + displacement : target;
     }
     pwm1 = value1;
     pwm2 = value2;
@@ -29,15 +29,15 @@ void sonMD::move_p1(
 };
 
 void sonMD::move_p2(
-    float value,
+    float displacement,
     float target) {
-  if (value1 != 0.0) {
+  if (value1 != 1.0) {
     stop();
   } else if (readTime() >= 100) {
     if (value2 > target) {
-      value2 = value2 - target > value ? value2 - value : target;
-    } else if (value2 < target) {
-      value2 = target - value2 > value ? value2 + value : target;
+      value2 = value2 - target > displacement ? value2 - displacement : target;
+    } else if (target > value2) {
+      value2 = target - value2 > displacement ? value2 + displacement : target;
     }
     pwm1 = value1;
     pwm2 = value2;
@@ -47,11 +47,11 @@ void sonMD::move_p2(
 
 void sonMD::stop() {
   if (readTime() >= 100) {
-    if (value1 != 0.0) {
-      value1 = value1 < 0.1 ? 0.0 : value1 - 0.1;
+    if (value1 != 1.0) {
+      value1 = value1 > 0.95 ? 1.0 : value1 + 0.05;
     }
-    if (value2 != 0.0) {
-      value2 = value2 < 0.1 ? 0.0 : value2 - 0.1;
+    if (value2 != 1.0) {
+      value2 = value2 > 0.95 ? 1.0 : value2 + 0.05;
     }
 
     pwm1 = value1;
