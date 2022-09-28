@@ -12,6 +12,7 @@ private:
   const int STOP = 2;
 
   unsigned long long int readTime();
+  float                  trueRate(float rate);
 
 public:
   const int   CW = 0, CCW = 1;
